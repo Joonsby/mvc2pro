@@ -107,6 +107,13 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/file_down.bo")) {
+			try {
+				forward= new ActionForward();
+				forward.setPath("/file_down.jsp");
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {

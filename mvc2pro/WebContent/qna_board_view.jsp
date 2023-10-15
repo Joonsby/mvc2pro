@@ -53,7 +53,7 @@ h2 {
 			<%=article.getBOARD_SUBJECT()%>
 			첨부파일 :
 			<%if(!(article.getBOARD_FILE()==null)){ %>
-			<a href="file_down?downFile=<%=article.getBOARD_FILE()%>"> <%=article.getBOARD_FILE() %>
+			<a href="file_down.bo?downFile=<%=article.getBOARD_FILE()%>"> <%=article.getBOARD_FILE() %>
 			</a>
 			<%} %>
 		</section>
