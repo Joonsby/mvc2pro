@@ -173,7 +173,7 @@ public class BoardDAO {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String board_max_sql = "select max(board_num) from board";
+		String board_max_sql = "select max(board_num) from board"; // 게시글 번호중 가장 큰 번호 선택
 		String sql = "";
 		int num = 0;
 		int insertCount = 0;
@@ -185,18 +185,18 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(board_max_sql);
 			rs = pstmt.executeQuery();
 			if (rs.next())
-				num = rs.getInt(1) + 1;
+				num = rs.getInt(1) + 1; // 결과가 있다면 첫번째 결과값 + 1 을 num에 대입 즉, 가장높은 번호의 게시글 번호 + 1
 			else
 				num = 1;
-			sql = "update board set BOARD_RE_SEQ=BOARD_RE_SEQ+1 where BOARD_RE_REF=? ";
-			sql += "and BOARD_RE_SEQ>?";
+			sql = "update board set BOARD_RE_SEQ=BOARD_RE_SEQ+1 where BOARD_RE_REF=? ";  
+			sql += "and BOARD_RE_SEQ>?"; // 가장 큰 게시글 번호에서 가져온 답글 게시물 순서와 답글 게시물 참조 번호가 일치하는 컬럼의 답글 게시물 순서 +1
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, re_ref);
 			pstmt.setInt(2, re_seq);
-			int updateCount = pstmt.executeUpdate();
+			int updateCount = pstmt.executeUpdate(); // 영향을 미친 행의 개수
 
 			if (updateCount > 0) {
-				commit(con);
+				commit(con); // 모든 작업을 정상적으로 처리하겠다는 명령어
 			}
 
 			re_seq = re_seq + 1;
@@ -205,16 +205,16 @@ public class BoardDAO {
 			sql += "BOARD_CONTENT, BOARD_FILE,BOARD_RE_REF,BOARD_RE_LEV,BOARD_RE_SEQ,";
 			sql += "BOARD_READCOUNT,BOARD_DATE) values(?,?,?,?,?,?,?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, article.getBOARD_NAME());
-			pstmt.setString(3, article.getBOARD_PASS());
-			pstmt.setString(4, article.getBOARD_SUBJECT());
-			pstmt.setString(5, article.getBOARD_CONTENT());
-			pstmt.setString(6, "");
-			pstmt.setInt(7, re_ref);
-			pstmt.setInt(8, re_lev);
-			pstmt.setInt(9, re_seq);
-			pstmt.setInt(10, 0);
+			pstmt.setInt(1, num); // 게시물 번호
+			pstmt.setString(2, article.getBOARD_NAME()); //게시물 제목
+			pstmt.setString(3, article.getBOARD_PASS()); // 게시물 비밀번호
+			pstmt.setString(4, article.getBOARD_SUBJECT()); // 게시물 제목
+			pstmt.setString(5, article.getBOARD_CONTENT()); // 게시물 내용
+			pstmt.setString(6, ""); // 게시물 첨부파일
+			pstmt.setInt(7, re_ref); // 답글 게시물 참조 번호
+			pstmt.setInt(8, re_lev); // 게시물 답글 레벨
+			pstmt.setInt(9, re_seq); // 게시물 조회수
+			pstmt.setInt(10, 0); // 게시물 작성일
 			insertCount = pstmt.executeUpdate();
 		} catch (SQLException ex) {
 		} finally {

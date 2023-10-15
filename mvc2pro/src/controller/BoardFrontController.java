@@ -55,7 +55,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/boardDetail.bo")) { // 게시판 자세히
+		} else if (command.equals("/boardDetail.bo")) { // 게시판 수정
 			action = new BoardDetailAction();
 			try {
 				forward = action.execute(request, response);

@@ -33,7 +33,7 @@ public class BoardDeleteProAction implements Action {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');");
+				out.println("alert('ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù.');");
 				out.println("history.back();");
 				out.println("</script>");
 				out.close();

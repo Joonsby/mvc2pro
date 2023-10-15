@@ -39,7 +39,7 @@ public class BoardModifyProAction implements Action {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out=response.getWriter();
 				out.println("<script>");
-				out.println("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');");
+				out.println("alert('ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.');");
 				out.println("history.back()");
 				out.println("</script>");
 			}
