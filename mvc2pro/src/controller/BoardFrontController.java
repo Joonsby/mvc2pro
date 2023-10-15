@@ -15,6 +15,7 @@ import action.BoardModifyProAction;
 import action.BoardReplyFormAction;
 import action.BoardReplyProAction;
 import action.BoardWriteProAction;
+import action.FileDownloadAction;
 import vo.ActionForward;
 
 @WebServlet("*.bo")
@@ -25,18 +26,14 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String RequestURI = request.getRequestURI();
 		/*
-		프로젝트 + 파일경로까지 가져옵니다.
-		request.getRequestURI()
-		예)  http://localhost:8080/project/list.jsp		
-		[return] /project/list.jsp  
-		*/
+		 * 프로젝트 + 파일경로까지 가져옵니다. request.getRequestURI() 예)
+		 * http://localhost:8080/project/list.jsp [return] /project/list.jsp
+		 */
 		String contextPath = request.getContextPath();
 		/*
-		프로젝트 Path만 가져옵니다.
-		request.getContextPath()
-		예)  http://localhost:8080/project/list.jsp
-		[return] /project 
-		*/	
+		 * 프로젝트 Path만 가져옵니다. request.getContextPath() 예)
+		 * http://localhost:8080/project/list.jsp [return] /project
+		 */
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
 		Action action = null;
@@ -44,22 +41,29 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 		if (command.equals("/boardWriteForm.bo")) {
 			forward = new ActionForward();
 			forward.setPath("/qna_board_write.jsp");
-		} else if (command.equals("/boardWritePro.bo")) {
+		} else if (command.equals("/boardWritePro.bo")) { // 게시글 등록
 			action = new BoardWriteProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/boardList.bo")) {
+		} else if (command.equals("/boardList.bo")) { // 게시판
 			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/boardDetail.bo")) {
+		} else if (command.equals("/boardDetail.bo")) { // 게시판 자세히
 			action = new BoardDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/file_down.bo")) { // 파일 다운로드
+			action = new FileDownloadAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -105,13 +109,6 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/file_down.bo")) {
-			try {
-				forward= new ActionForward();
-				forward.setPath("/file_down.jsp");
-			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}

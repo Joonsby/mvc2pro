@@ -19,7 +19,5 @@ import vo.BoardBean;
 	   	request.setAttribute("article", article);
    		forward.setPath("/qna_board_view.jsp");
    		return forward;
-
 	 }
-	 
 }

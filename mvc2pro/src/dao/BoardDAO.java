@@ -210,7 +210,7 @@ public class BoardDAO {
 			pstmt.setString(3, article.getBOARD_PASS());
 			pstmt.setString(4, article.getBOARD_SUBJECT());
 			pstmt.setString(5, article.getBOARD_CONTENT());
-			pstmt.setString(6, ""); // ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+			pstmt.setString(6, "");
 			pstmt.setInt(7, re_ref);
 			pstmt.setInt(8, re_lev);
 			pstmt.setInt(9, re_seq);
@@ -271,6 +271,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		int updateCount = 0;
 		String sql = "update board set BOARD_READCOUNT = " + "BOARD_READCOUNT+1 where BOARD_NUM = " + board_num;
+		// Å¬¸¯ÇÑ °Ô½Ã±Û ¹øÈ£ÀÇ Á¶È¸¼ö¸¦ 1¾¿ Áõ°¡½ÃÅ´
 
 		try {
 			pstmt = con.prepareStatement(sql);

@@ -15,7 +15,7 @@ public class BoardReplyFormAction implements Action {
 	   		String nowPage = request.getParameter("page");
 	   		int board_num=Integer.parseInt(request.getParameter("board_num"));
 	   		BoardDetailService boardDetailService = new BoardDetailService();
-	   		BoardBean article=boardDetailService.getArticle(board_num);	
+	   		BoardBean article = boardDetailService.getArticle(board_num);
 	   		request.setAttribute("article", article);
 	   		request.setAttribute("page", nowPage);
 	   		forward.setPath("/qna_board_reply.jsp");

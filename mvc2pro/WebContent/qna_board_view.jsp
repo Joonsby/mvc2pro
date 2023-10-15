@@ -4,7 +4,8 @@
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
     String nowPage = (String)request.getAttribute("page");
-    System.out.println(nowPage);%>
+    System.out.println(nowPage);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -62,13 +63,10 @@ h2 {
 		</section>
 	</section>
 	<section id="commandList">
-		<a
-			href="boardReplyForm.bo?board_num=<%=article.getBOARD_NUM() %>&page=<%=nowPage%>">
-			[답변] </a> <a
-			href="boardModifyForm.bo?board_num=<%=article.getBOARD_NUM() %>">
-			[수정] </a> <a
-			href="boardDeleteForm.bo?board_num=<%=article.getBOARD_NUM() %>&page=<%=nowPage%>">
-			[삭제] </a> <a href="boardList.bo?page=<%=nowPage%>">[목록]</a>&nbsp;&nbsp;
+		<a href="boardReplyForm.bo?board_num=<%=article.getBOARD_NUM() %>&page=<%=nowPage%>">[답변]</a>
+		<a href="boardModifyForm.bo?board_num=<%=article.getBOARD_NUM() %>">[수정]</a>
+		<a href="boardDeleteForm.bo?board_num=<%=article.getBOARD_NUM() %>&page=<%=nowPage%>">[삭제]</a>
+		<a href="boardList.bo?page=<%=nowPage%>">[목록]</a>&nbsp;&nbsp;
 	</section>
 </body>
 </html>
