@@ -15,7 +15,6 @@ import action.BoardModifyProAction;
 import action.BoardReplyFormAction;
 import action.BoardReplyProAction;
 import action.BoardWriteProAction;
-import action.FileDownloadAction;
 import vo.ActionForward;
 
 @WebServlet("*.bo")
