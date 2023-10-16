@@ -24,12 +24,12 @@ public class BoardWriteProAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize,
 				"UTF-8",
 				new DefaultFileRenamePolicy());
-		boardBean = new BoardBean();
+		boardBean = new BoardBean();		
 		boardBean.setBOARD_NAME(multi.getParameter("BOARD_NAME"));
 		boardBean.setBOARD_PASS(multi.getParameter("BOARD_PASS"));
 		boardBean.setBOARD_SUBJECT(multi.getParameter("BOARD_SUBJECT"));
 		boardBean.setBOARD_CONTENT(multi.getParameter("BOARD_CONTENT"));
-		boardBean.setBOARD_FILE(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
+		boardBean.setBOARD_FILE(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));		
 		BoardWriteProService boardWriteProService = new BoardWriteProService();
 		boolean isWriteSuccess = boardWriteProService.registArticle(boardBean);
 		System.out.println(isWriteSuccess);

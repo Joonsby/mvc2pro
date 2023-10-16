@@ -39,15 +39,15 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 
 		if (command.equals("/boardWriteForm.bo")) {
 			forward = new ActionForward();
-			forward.setPath("/qna_board_write.jsp");
+			forward.setPath("/qna_board_write.jsp");	
 		} else if (command.equals("/boardWritePro.bo")) { // 게시글 등록
 			action = new BoardWriteProAction();
 			try {
-				forward = action.execute(request, response);
+				forward = action.execute(request, response);				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/boardList.bo")) { // 게시판
+		} else if (command.equals("/boardList.bo")) { // 게시판			
 			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);
@@ -61,8 +61,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/file_down.bo")) { // 파일 다운로드
-			String downFile = request.getParameter("down_file");
+		} else if (command.equals("/file_down.bo")) { // 파일 다운로드			
 			forward = new ActionForward();
 			forward.setPath("file_down.jsp");
 		} else if (command.equals("/boardReplyForm.bo")) {

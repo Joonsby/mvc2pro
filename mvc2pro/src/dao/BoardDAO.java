@@ -156,6 +156,7 @@ public class BoardDAO {
 			pstmt.setInt(8, 0);
 			pstmt.setInt(9, 0);
 			pstmt.setInt(10, 0);
+			System.out.println(article.getBOARD_NAME());
 
 			insertCount = pstmt.executeUpdate();
 
