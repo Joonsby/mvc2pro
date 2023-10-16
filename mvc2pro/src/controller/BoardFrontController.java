@@ -63,12 +63,9 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/file_down.bo")) { // 파일 다운로드
-			action = new FileDownloadAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			String downFile = request.getParameter("down_file");
+			forward = new ActionForward();
+			forward.setPath("file_down.jsp");
 		} else if (command.equals("/boardReplyForm.bo")) {
 			action = new BoardReplyFormAction();
 			try {

@@ -23,7 +23,7 @@ public class FileDownloadAction implements Action{
 			} catch(Exception e) {
 			}
 		}
-		ActionForward forward = new ActionForward();		
+		ActionForward forward = new ActionForward();
 		forward.setPath("/file_down.jsp");
 		return forward;
 	}
